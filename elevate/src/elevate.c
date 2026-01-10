@@ -29,7 +29,12 @@ int main(int argc, char *argv[]) {
     }
 
     int numPeople, numStops;
-    fscanf(file, "%d %d", &numPeople, &numStops);
+    if (fscanf(file, "%d %d", &numPeople, &numStops) != 2) {
+    fprintf(stderr, "Invalid input\n");
+    fclose(file);
+    return 1;
+}
+
 
     int *dests = malloc(numPeople * sizeof(int));
 if (dests == NULL) {
