@@ -31,7 +31,13 @@ int main(int argc, char *argv[]) {
     int numPeople, numStops;
     fscanf(file, "%d %d", &numPeople, &numStops);
 
-    int dests[numPeople];
+    int *dests = malloc(numPeople * sizeof(int));
+if (dests == NULL) {
+    fprintf(stderr, "Memory allocation failed\n");
+    fclose(file);
+    return 1;
+}
+
     for (int i = 0; i < numPeople; i++) {
         fscanf(file, "%d", &dests[i]);
     }
@@ -65,6 +71,6 @@ int main(int argc, char *argv[]) {
         printf("Last stop at floor: %d\n", lastStop);
     }
     printf("The minimum cost is: %d\n", minCost);
-
+  free(dests);
     return 0;
 }
