@@ -42,10 +42,11 @@ if (dests == NULL) {
     fclose(file);
     return 1;
 }
+int i;
 
-    for (int i = 0; i < numPeople; i++) {
-        fscanf(file, "%d", &dests[i]);
-    }
+    for (i = 0; i < numPeople; i++) {
+    fscanf(file, "%d", &dests[i]);
+}
 
     fclose(file);
 
